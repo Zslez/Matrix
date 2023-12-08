@@ -2,6 +2,8 @@
 #include <cmath>
 #include <array>
 
+#include <cstdint> // for uint16_t type
+
 #include "variables/constants.h"
 #include "matrices.hpp"
 
@@ -21,11 +23,16 @@ int main() {
     Matrices::Matrix N = M.Inverse();
     //N.Print();
 
-    Matrices::RandomInt R(3, 3, 0, 10);
-    R.Print();
+    Vector b;
+    double b_arr[2] = {1, 1};
+    b.Set(2, b_arr);
+
+    Matrices::Random R(2, 2, 0, 0.001);
+
+    Vector x = R.SolveAxb(b);
     std::cout << R.ToString() << std::endl;
-    R.Inverse().Print();
-    std::cout << R.Inverse().ToString() << std::endl;
+    std::cout << b.ToString() << std::endl;
+    std::cout << x.ToString() << std::endl;
 
     /*auto s = std::chrono::system_clock::now();
 
