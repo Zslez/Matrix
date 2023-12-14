@@ -7,13 +7,13 @@ class Matrices::Vector {
     public:
 
     int size;
-    double vec[SIZEMAX];
+    double vec[NMAX];
 
 
 
     // SETUP AND FORMAT FUNCTIONS
 
-    void Set(int sizeOfVector, double values[SIZEMAX]);
+    void Set(int sizeOfVector, double values[NMAX]);
     void Print();
     std::string ToString();
 
@@ -24,6 +24,7 @@ class Matrices::Vector {
     double Norm();
     bool IsZero();
     int FirstNonZero();
+    void Round(int prec);
 
 
 
@@ -31,20 +32,20 @@ class Matrices::Vector {
 
     double operator[](int index);
 
-    bool operator==(const Vector &other);
-    bool operator!=(const Vector &other);
+    bool operator==(Vector other);
+    bool operator!=(Vector other);
 
     Vector operator-();
 
-    Vector operator+(const Vector &other);
-    Vector operator-(Vector &other);
-    Vector operator+=(Vector &other);
-    Vector operator-=(Vector &other);
+    Vector operator+(Vector other);
+    Vector operator-(Vector other);
+    Vector operator+=(Vector other);
+    Vector operator-=(Vector other);
 
-    Vector operator*(const double other);
-    Vector operator/(const double other);
-    Vector operator*=(const double other);
-    Vector operator/=(const double other);
+    Vector operator*(double other);
+    Vector operator/(double other);
+    Vector operator*=(double other);
+    Vector operator/=(double other);
 };
 
 

@@ -13,8 +13,8 @@ void Matrix::Set(int rowsNumber, int colsNumber, Vector columns[]) {
 
     // error if size is too large or non positive
 
-    if (rows <= 0 || rows > SIZEMAX || cols <= 0 || cols > SIZEMAX) {
-        error << "The matrix rows and cols number have to be greater than 0 and less than " << SIZEMAX << ".";
+    if (rows <= 0 || rows > NMAX || cols <= 0 || cols > NMAX) {
+        error << "The matrix rows and cols number have to be greater than 0 and less than " << NMAX << ".";
         exit(0);
     }
 
@@ -28,16 +28,16 @@ void Matrix::Set(int rowsNumber, int colsNumber, Vector columns[]) {
 
 
 /**
- * @brief Builds the matrix from an array of arrays of doubles.
+ * @brief Builds the matrix from an array of arrays of doubles interpreted as Column Vectors.
 */
-void Matrix::SetFromColumnsArray(int rowsNumber, int colsNumber, double columns[][SIZEMAX]) {
+void Matrix::SetFromColumnsArray(int rowsNumber, int colsNumber, double columns[][NMAX]) {
     rows = rowsNumber;
     cols = colsNumber;
 
     // error if size is too large or non positive
 
-    if (rows <= 0 || rows > SIZEMAX || cols <= 0 || cols > SIZEMAX) {
-        error << "The matrix rows and cols number have to be greater than 0 and less than " << SIZEMAX << ".";
+    if (rows <= 0 || rows > NMAX || cols <= 0 || cols > NMAX) {
+        error << "The matrix rows and cols number have to be greater than 0 and less than " << NMAX << ".";
         exit(0);
     }
 
@@ -53,9 +53,9 @@ void Matrix::SetFromColumnsArray(int rowsNumber, int colsNumber, double columns[
 
 
 /**
- * @brief Builds the matrix from an array of arrays of doubles.
+ * @brief Builds the matrix from an array of arrays of doubles interpreted as Row Vectors.
 */
-void Matrix::SetFromRowsArray(int rowsNumber, int colsNumber, double rows[][SIZEMAX]) {
+void Matrix::SetFromRowsArray(int rowsNumber, int colsNumber, double rows[][NMAX]) {
     SetFromColumnsArray(rowsNumber, colsNumber, rows);
     Transpose();
 }

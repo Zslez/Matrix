@@ -6,11 +6,11 @@ using namespace Matrices;
 
 // ADVANCED ARITHMETIC
 
-Matrix operator*(Vector &vect1, Vector &vect2) {
+Matrix operator*(Vector vect1, Vector vect2) {
     // interprets the first vector as the column matrix and the second as the row matrix
     // and performs the rows by columns product
 
-    Vector newMat[SIZEMAX];
+    Vector newMat[NMAX];
     Matrix result;
 
     for (int i = 0; i < vect1.size; i++) {
@@ -26,7 +26,7 @@ Matrix operator*(Vector &vect1, Vector &vect2) {
 
 
 
-Matrix operator*(Matrix &mat1, Matrix &mat2) {
+Matrix operator*(Matrix mat1, Matrix mat2) {
     // performs the rows by columns product and returns the resulting Matrix
 
     if (mat1.cols != mat2.rows) {
@@ -35,13 +35,13 @@ Matrix operator*(Matrix &mat1, Matrix &mat2) {
         exit(0);
     }
 
-    Vector newMat[SIZEMAX];
+    Vector newMat[NMAX];
     Matrix result;
 
     mat1 = mat1.Transposed();
 
     for (int i = 0; i < mat2.cols; i++) {
-        double vec[SIZEMAX];
+        double vec[NMAX];
 
         for (int j = 0; j < mat1.cols; j++) {
             double total = 0;
@@ -69,7 +69,7 @@ Matrix operator*(Matrix &mat1, Matrix &mat2) {
 
 
 
-Vector operator*(Matrix &mat, Vector &vect) {
+Vector operator*(Matrix mat, Vector vect) {
     // performs the rows by columns product and returns the resulting Vector
 
     if (mat.cols != vect.size) {

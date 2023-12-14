@@ -7,15 +7,15 @@ class Matrices::Matrix {
     public:
 
     int rows, cols;
-    Vector mat[SIZEMAX];
+    Vector mat[NMAX];
 
 
 
     // SETUP AND FORMAT FUNCTIONS
 
     void Set(int rowsNumber, int colsNumber, Vector columns[]);
-    void SetFromColumnsArray(int rowsNumber, int colsNumber, double columns[][SIZEMAX]);
-    void SetFromRowsArray(int rowsNumber, int colsNumber, double rows[][SIZEMAX]);
+    void SetFromColumnsArray(int rowsNumber, int colsNumber, double columns[][NMAX]);
+    void SetFromRowsArray(int rowsNumber, int colsNumber, double rows[][NMAX]);
     void Print(const char *format);
 
     std::string ToRowsString();
@@ -39,6 +39,8 @@ class Matrices::Matrix {
     void SwapCols(int col1, int col2);
     void SwapRows(int row1, int row2);
 
+    void Round(int prec);
+
 
 
     // GAUSS ELIMINATION
@@ -54,20 +56,20 @@ class Matrices::Matrix {
 
     Vector operator[](int index);
 
-    bool operator==(const Matrix &other);
-    bool operator!=(const Matrix &other);
+    bool operator==(Matrix other);
+    bool operator!=(Matrix other);
 
     Matrix operator-();
 
-    Matrix operator+(const Matrix &other);
-    Matrix operator-(Matrix &other);
-    Matrix operator+=(Matrix &other);
-    Matrix operator-=(Matrix &other);
+    Matrix operator+(Matrix other);
+    Matrix operator-(Matrix other);
+    Matrix operator+=(Matrix other);
+    Matrix operator-=(Matrix other);
 
-    Matrix operator*(const double other);
-    Matrix operator/(const double other);
-    Matrix operator*=(const double other);
-    Matrix operator/=(const double other);
+    Matrix operator*(double other);
+    Matrix operator/(double other);
+    Matrix operator*=(double other);
+    Matrix operator/=(double other);
 
 
 
@@ -129,13 +131,13 @@ class Matrices::Random : public Matrices::Matrix {
 
         // error if size is too large or non positive
 
-        if (rows <= 0 || rows > SIZEMAX || cols <= 0 || cols > SIZEMAX) {
-            error << "The matrix rows and cols number have to be greater than 0 and less than " << SIZEMAX << ".";
+        if (rows <= 0 || rows > NMAX || cols <= 0 || cols > NMAX) {
+            error << "The matrix rows and cols number have to be greater than 0 and less than " << NMAX << ".";
             exit(0);
         }
 
         for (int i = 0; i < cols; i++) {
-            double vec[SIZEMAX];
+            double vec[NMAX];
 
             for (int j = 0; j < rows; j++) {
                 vec[j] = float(rangeA) + (float(rand()) / float(RAND_MAX)) * fabs(rangeB - rangeA);
@@ -166,13 +168,13 @@ class Matrices::RandomInt : public Matrices::Matrix {
 
         // error if size is too large or non positive
 
-        if (rows <= 0 || rows > SIZEMAX || cols <= 0 || cols > SIZEMAX) {
-            error << "The matrix rows and cols number have to be greater than 0 and less than " << SIZEMAX << ".";
+        if (rows <= 0 || rows > NMAX || cols <= 0 || cols > NMAX) {
+            error << "The matrix rows and cols number have to be greater than 0 and less than " << NMAX << ".";
             exit(0);
         }
 
         for (int i = 0; i < cols; i++) {
-            double vec[SIZEMAX];
+            double vec[NMAX];
 
             for (int j = 0; j < rows; j++) {
                 vec[j] = rand() % (rangeB - rangeA) + rangeA;
@@ -204,8 +206,8 @@ class Matrices::Identity : public Matrices::Matrix {
 
         // error if size is too large or non positive
 
-        if (rows <= 0 || rows > SIZEMAX) {
-            error << "The matrix size has to be greater than 0 and less than " << SIZEMAX << ".";
+        if (rows <= 0 || rows > NMAX) {
+            error << "The matrix size has to be greater than 0 and less than " << NMAX << ".";
             exit(0);
         }
 
@@ -234,8 +236,8 @@ class Matrices::Hilbert : public Matrices::Matrix {
 
         // error if size is too large or non positive
 
-        if (rows <= 0 || rows > SIZEMAX) {
-            error << "The matrix size has to be greater than 0 and less than " << SIZEMAX << ".";
+        if (rows <= 0 || rows > NMAX) {
+            error << "The matrix size has to be greater than 0 and less than " << NMAX << ".";
             exit(0);
         }
 

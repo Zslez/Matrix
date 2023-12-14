@@ -10,8 +10,11 @@ namespace Matrices {
         int b = a();
     }
 
-    const int SIZEMAX = 50;
-    const char *FORMAT = "% 9.2lf ";
+    const int NMAX = 50;
+    const char *FORMAT = "% 12.9lf ";
+
+    typedef double VEC[NMAX];
+    typedef double MAT[NMAX][NMAX];
 
     class Vector;
     class Matrix;

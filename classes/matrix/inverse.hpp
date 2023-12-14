@@ -5,7 +5,7 @@ using namespace Matrices;
 
 /**
  * @brief Removes the specified column from the matrix and reduces its size by one.
- * @note This function modifies the matrix object.
+ * @note This function modifies the Matrix object.
 */
 void Matrix::RemoveColumn(int col) {
     for (int i = col + 1; i < cols; i++) {
@@ -67,10 +67,10 @@ Matrix Matrix::CofactorMatrix() {
         exit(0);
     }
 
-    Vector newMat[SIZEMAX];
+    Vector newMat[NMAX];
 
     for (int i = 0; i < cols; i++) {
-        double newVec[SIZEMAX];
+        double newVec[NMAX];
 
         for (int j = 0; j < rows; j++) {
             newVec[j] = (((i + j) % 2) ? -1 : 1) * DeterminantIJ(j, i);
@@ -113,6 +113,6 @@ Matrix Matrix::Inverse() {
 
 /**
  * @brief Inverts the matrix.
- * @note This function modifies the matrix object.
+ * @note This function modifies the Matrix object.
 */
 void Matrix::Invert() {*this = this->Inverse();}

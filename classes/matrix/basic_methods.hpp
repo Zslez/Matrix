@@ -8,10 +8,10 @@ using namespace Matrices;
  * @brief Returns the transposed of the given matrix.
 */
 Matrix Matrix::Transposed() {
-    Vector newMat[SIZEMAX];
+    Vector newMat[NMAX];
 
     for (int i = 0; i < rows; i++) {
-        double newVec[SIZEMAX];
+        double newVec[NMAX];
 
         for (int j = 0; j < cols; j++) {
             newVec[j] = mat[j][i];
@@ -32,7 +32,7 @@ Matrix Matrix::Transposed() {
 
 /**
  * @brief Transposes the matrix.
- * @note This function modifies the matrix object.
+ * @note This function modifies the Matrix object.
 */
 void Matrix::Transpose() {*this = this->Transposed();}
 
@@ -74,7 +74,7 @@ Matrix Matrix::Merged(Matrix matrix) {
 
 /**
  * @brief Merges the matrix with the given matrix.
- * @note This function modifies the matrix object.
+ * @note This function modifies the Matrix object.
 */
 void Matrix::Merge(Matrix matrix) {*this = this->Merged(matrix);}
 
@@ -117,7 +117,7 @@ bool Matrix::IsZero() {
 
 /**
  * @brief Swaps the given columns of the matrix.
- * @note This function modifies the matrix object.
+ * @note This function modifies the Matrix object.
 */
 void Matrix::SwapCols(int col1, int col2) {
     Vector temp = mat[col1];
@@ -131,10 +131,24 @@ void Matrix::SwapCols(int col1, int col2) {
 
 /**
  * @brief Swaps the given rows of the matrix.
- * @note This function modifies the matrix object.
+ * @note This function modifies the Matrix object.
 */
 void Matrix::SwapRows(int row1, int row2) {
     Transpose();
     SwapCols(row1, row2);
     Transpose();
+}
+
+
+
+
+
+/**
+ * @brief Rounds every entry of the Matrix to the specified decimal precision.
+ * @note This function modifies the Matrix object.
+*/
+void Matrix::Round(int prec) {
+    for (int i = 0; i < cols; i++) {
+        mat[i].Round(prec);
+    }
 }

@@ -7,13 +7,13 @@ using namespace Matrices;
 /**
  * @brief Builds the Vector from an array of double.
 */
-void Vector::Set(int sizeOfVector, double values[SIZEMAX]) {
+void Vector::Set(int sizeOfVector, double values[NMAX]) {
     size = sizeOfVector;
 
     // error if size is too large or non positive
 
-    if (size <= 0 || size > SIZEMAX) {
-        error << "The vector size has to be greater than 0 and less than " << SIZEMAX << ".";
+    if (size <= 0 || size > NMAX) {
+        error << "The vector size has to be greater than 0 and less than " << NMAX << ".";
         exit(0);
     }
 

@@ -45,3 +45,17 @@ int Vector::FirstNonZero() {
 
     return -1;
 }
+
+
+
+
+
+/**
+ * @brief Rounds every entry of the Vector to the specified decimal precision.
+ * @note This function modifies the Matrix object.
+*/
+void Vector::Round(int prec) {
+    for (int i = 0; i < size; i++) {
+        vec[i] = std::round(vec[i] * pow(10., prec)) / pow(10., prec);
+    }
+}

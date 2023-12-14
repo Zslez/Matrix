@@ -58,7 +58,7 @@ Matrix Matrix::RowReduced() {return (*this).Transposed().ColumnReduced().Transpo
 
 /**
  * @brief Reduces the matrix to a lower triangular matrix.
- * @note This function modifies the matrix object.
+ * @note This function modifies the Matrix object.
 */
 void Matrix::ReduceToColEchelon() {*this = this->ColumnReduced();}
 
@@ -68,6 +68,6 @@ void Matrix::ReduceToColEchelon() {*this = this->ColumnReduced();}
 
 /**
  * @brief Reduces the matrix to an upper triangular matrix.
- * @note This function modifies the matrix object.
+ * @note This function modifies the Matrix object.
 */
 void Matrix::ReduceToRowEchelon() {*this = this->RowReduced();}
