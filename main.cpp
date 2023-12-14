@@ -24,15 +24,35 @@ int main() {
     //N.Print();
 
     Vector b;
-    double b_arr[2] = {1, 1};
-    b.Set(2, b_arr);
+    double b_arr[Matrices::SIZEMAX] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    b.Set(7, b_arr);
 
-    Matrices::Random R(2, 2, 0, 0.001);
+    Matrices::Hilbert H(7);
+    H.SolveAxb(b).Print();
+    //(H * H_inv).Print("% 12.2lf ");
+    //H_inv.CofactorMatrix().Print();
 
-    Vector x = R.SolveAxb(b);
-    std::cout << R.ToString() << std::endl;
+    //double c[Matrices::SIZEMAX][Matrices::SIZEMAX] = {{4323.53, -2425.39}, {-1124.82, 1986.01}};
+    /*double c[Matrices::SIZEMAX][Matrices::SIZEMAX] = {{0.000339,0.000414},{0.000192,0.000738}};
+    Matrices::Matrix C;
+    C.SetFromRowsArray(2, 2, c);
+    //C.Invert();
+
+    Vector x = C.SolveAxb(b);
+    std::cout << C.ToRowsString() << std::endl;
     std::cout << b.ToString() << std::endl;
-    std::cout << x.ToString() << std::endl;
+    std::cout << x.ToString() << std::endl;*/
+
+
+
+
+
+
+
+
+
+
+    // SPEED TEST
 
     /*auto s = std::chrono::system_clock::now();
 
@@ -47,18 +67,7 @@ int main() {
     std::cout << "\r" << elapsed.count() << "        " << std::endl;*/
 
 
-
-
-
-
-
-
-
-
-
-
-
-    // vectors
+    // VECTORS TESTS
 
     //double vec1[5] = {1, 2, 3, -4, 0.5};
     //double vec2[5] = {0.2, 4, -1./3, 2./100, 7};
@@ -73,7 +82,7 @@ int main() {
 
 
 
-    // matrices
+    // MATRICES TESTS
 
     Matrices::Vector mat1[2] = {V, W};
     Matrices::Matrix M1;
@@ -87,7 +96,7 @@ int main() {
 
 
 
-    // vector product
+    // VECTOR AND MATRIX PRODUCT TESTS
 
     double vec3[5] = {1, 2, 3, 4, 5};
 

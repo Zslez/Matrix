@@ -49,7 +49,23 @@ void Vector::Print() {
 std::string Vector::ToString() {
     std::string result = "{" + std::to_string(vec[0]);
 
-    for (int i = 1; i < size; i++) {result +=  "," + std::to_string(vec[i]);}
+    // remove trailing 0s and the . if the number is floating point and it ends in them
+
+    if (result.find('.') != std::string::npos) {
+        while (result[result.size() - 1] == '0') result.pop_back();
+        if (result[result.size() - 1] == '.') result.pop_back();
+    }
+
+    for (int i = 1; i < size; i++) {
+        result +=  "," + std::to_string(vec[i]);
+
+        // remove trailing 0s and the . if the number is floating point and it ends in them
+
+        if (result.find('.') != std::string::npos) {
+            while (result[result.size() - 1] == '0') result.pop_back();
+            if (result[result.size() - 1] == '.') result.pop_back();
+        }
+    }
 
     return result + "}";
 }

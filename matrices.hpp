@@ -18,6 +18,7 @@ namespace Matrices {
     class Random;
     class RandomInt;
     class Identity;
+    class Hilbert;
 }
 
 

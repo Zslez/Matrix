@@ -15,9 +15,11 @@ class Matrices::Matrix {
 
     void Set(int rowsNumber, int colsNumber, Vector columns[]);
     void SetFromColumnsArray(int rowsNumber, int colsNumber, double columns[][SIZEMAX]);
+    void SetFromRowsArray(int rowsNumber, int colsNumber, double rows[][SIZEMAX]);
     void Print(const char *format);
 
-    std::string ToString();
+    std::string ToRowsString();
+    std::string ToColsString();
 
 
 
@@ -84,6 +86,7 @@ class Matrices::Matrix {
 
     // LINEAR SYSTEMS
 
+    void LU_Decomposition(Matrix &L, Matrix &U);
     Vector SolveAxb(Vector b);
 };
 
@@ -142,6 +145,13 @@ class Matrices::Random : public Matrices::Matrix {
         }
     }
 };
+
+
+
+
+
+
+
 
 /**
  * @brief Class inherited from `Matrices::Matrix`
@@ -203,6 +213,35 @@ class Matrices::Identity : public Matrices::Matrix {
             for (int j = 0; j < cols; j++) {
                 if (i == j) mat[i].vec[j] = 1;
                 else mat[i].vec[j] = 0;
+            }
+        }
+    }
+};
+
+
+
+
+
+
+
+
+class Matrices::Hilbert : public Matrices::Matrix {
+    public:
+
+    Hilbert(int size) {
+        rows = size;
+        cols = size;
+
+        // error if size is too large or non positive
+
+        if (rows <= 0 || rows > SIZEMAX) {
+            error << "The matrix size has to be greater than 0 and less than " << SIZEMAX << ".";
+            exit(0);
+        }
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                mat[i].vec[j] = 1. / (i + j + 1);
             }
         }
     }

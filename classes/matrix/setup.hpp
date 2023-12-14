@@ -53,6 +53,18 @@ void Matrix::SetFromColumnsArray(int rowsNumber, int colsNumber, double columns[
 
 
 /**
+ * @brief Builds the matrix from an array of arrays of doubles.
+*/
+void Matrix::SetFromRowsArray(int rowsNumber, int colsNumber, double rows[][SIZEMAX]) {
+    SetFromColumnsArray(rowsNumber, colsNumber, rows);
+    Transpose();
+}
+
+
+
+
+
+/**
  * @brief Pretty prints the matrix.
 */
 void Matrix::Print(const char *format = FORMAT) {
@@ -74,7 +86,22 @@ void Matrix::Print(const char *format = FORMAT) {
  * @brief Converts the Matrix to a string.
  * Useful if one need to copy the Matrix, formatted, to export it.
 */
-std::string Matrix::ToString() {
+std::string Matrix::ToColsString() {
+    std::string result = "{" + mat[0].ToString();
+
+    for (int i = 1; i < cols; i++) {result += "," + mat[i].ToString();}
+
+    return result + "}";
+}
+
+
+
+
+/**
+ * @brief Converts the Matrix to a string.
+ * Useful if one need to copy the Matrix, formatted, to export it.
+*/
+std::string Matrix::ToRowsString() {
     Transpose();
 
     std::string result = "{" + mat[0].ToString();
